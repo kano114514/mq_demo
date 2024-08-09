@@ -1,0 +1,14 @@
+logging:
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: hmall
+    username: waterside
+    password: 123
+    listener:
+      simple:
+        prefetch: 1

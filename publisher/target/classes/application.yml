@@ -1,0 +1,18 @@
+logging:
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: hmall
+    username: waterside
+    password: 123
+    connection-timeout: 1s
+    template:
+      retry:
+        enabled: true
+        initial-interval: 500ms
+        multiplier: 1
+        max-attempts: 3
