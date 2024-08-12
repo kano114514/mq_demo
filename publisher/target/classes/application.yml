@@ -1,7 +1,8 @@
 logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
-
+  level:
+    com.itheima: debug
 spring:
   rabbitmq:
     host: localhost
@@ -16,3 +17,5 @@ spring:
         initial-interval: 500ms
         multiplier: 1
         max-attempts: 3
+    publisher-confirm-type: none
+    publisher-returns: false
