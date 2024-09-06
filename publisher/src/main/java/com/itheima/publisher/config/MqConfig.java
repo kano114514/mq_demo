@@ -16,15 +16,19 @@ public class MqConfig {
 
     @PostConstruct
     public void init(){
+
+        //return时进行回调的确定，
         rabbitTemplate.setReturnsCallback(new RabbitTemplate.ReturnsCallback(){
+
             @Override
-            public void returnedMessage(ReturnedMessage returned){
+            public void returnedMessage(ReturnedMessage returned) {
                 log.error("触发 return callback");
                 log.debug("交换机:{}",returned.getExchange());
                 log.debug("路由键:{}",returned.getRoutingKey());
                 log.debug("消息:{}",returned.getMessage());
                 log.debug("异常代码:{}",returned.getReplyCode());
                 log.debug("异常信息:{}",returned.getReplyText());
+                System.out.println("收到了return报告。");
             }
         });
     }
