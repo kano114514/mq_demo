@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Slf4j
-@Component
+//@Component
 public class SpringRabbitListener {
 
     @RabbitListener(queues = "simple.queue")
