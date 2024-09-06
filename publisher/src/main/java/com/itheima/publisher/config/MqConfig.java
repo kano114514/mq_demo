@@ -20,11 +20,11 @@ public class MqConfig {
             @Override
             public void returnedMessage(ReturnedMessage returned){
                 log.error("触发 return callback");
-                log.debug("exchange:{}",returned.getExchange());
-                log.debug("routingkey:{}",returned.getRoutingKey());
-                log.debug("message:{}",returned.getMessage());
-                log.debug("replyCode:{}",returned.getReplyCode());
-                log.debug("replyText:{}",returned.getReplyText());
+                log.debug("交换机:{}",returned.getExchange());
+                log.debug("路由键:{}",returned.getRoutingKey());
+                log.debug("消息:{}",returned.getMessage());
+                log.debug("异常代码:{}",returned.getReplyCode());
+                log.debug("异常信息:{}",returned.getReplyText());
             }
         });
     }
