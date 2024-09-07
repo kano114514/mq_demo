@@ -6,7 +6,9 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.retry.ImmediateRequeueMessageRecoverer;
 import org.springframework.amqp.rabbit.retry.MessageRecoverer;
+import org.springframework.amqp.rabbit.retry.RejectAndDontRequeueRecoverer;
 import org.springframework.amqp.rabbit.retry.RepublishMessageRecoverer;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
@@ -24,22 +26,7 @@ public class ErrorMessageConfiguration {
 
 
     @Bean
-    public DirectExchange errorExchange() {
-        return new DirectExchange("error.direct");
-    }
-
-    @Bean
-    public Queue errorQueue() {
-        return new Queue("error.queue");
-    }
-
-    @Bean
-    public Binding bindingError(Queue errorQueue, DirectExchange errorExchange) {
-        return BindingBuilder.bind(errorQueue).to(errorExchange).with("error");
-    }
-
-    @Bean
-    public MessageRecoverer meesageRecoverer(){
+    public MessageRecoverer messageRecoverer(){
         return new RepublishMessageRecoverer(rabbitTemplate,"error.direct","error");
     }
 }

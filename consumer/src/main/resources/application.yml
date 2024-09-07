@@ -11,8 +11,10 @@ spring:
     password: 123
     listener:
       simple:
-        prefetch: 1
-        acknowledge-mode: auto
-        retry:
-          enabled: true
-          initial-interval: 1000ms
+        prefetch: 1 #防止速度慢的消费者阻塞其他速度快的消费者
+        acknowledge-mode: auto #业务异常返回nack，消息校验出错返回reject
+#        retry: #设置重试次数和方式，如果重试失败之后就会执行MessageRecoverer里的方法
+#          enabled: true
+#          initial-interval: 1000ms
+#          max-attempts: 3
+
