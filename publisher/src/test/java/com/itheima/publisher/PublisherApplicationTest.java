@@ -83,11 +83,9 @@ class PublisherApplicationTest {
 
     @Test
     public void testDirect(){
-        String exchange="direct.queue1";
-        Map<String, Object> message=new HashMap<>();
-        message.put("name","jack");
-        message.put("age",21);
-        rabbitTemplate.convertAndSend(exchange,message);
+        String exchange="today.ttl.queue";
+        String ttl="ttl";
+        rabbitTemplate.convertAndSend(exchange,ttl);
     }
 
 
